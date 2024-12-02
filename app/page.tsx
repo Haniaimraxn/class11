@@ -22,9 +22,12 @@ export default function FetchPostsPage() {
         }
         const data = await response.json();
         setPosts(data);
-      } catch (err: any) {
+      } catch (err: unknown) { if (err instanceof Error) {
         setError(err.message);
-      } finally {
+      } else {
+        setError('An unexpected error occured');
+      }
+    }finally {
         setLoading(false);
       }
     };

@@ -6,8 +6,11 @@ export async function GET() {
     const posts = await response.json();
 
     return NextResponse.json(posts);
-  } catch (error) {
+  } catch (err) 
+   {
+console.log(err)
     return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
-  }
+  } 
 }
+
 
